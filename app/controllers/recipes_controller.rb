@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :edit, :destroy, :update]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,16 +11,23 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+   @recipe = Recipe.new
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @user = current_user.id
+    @recipe = Recipe.new(
+      name: recipe_params[:name],
+      food_type: recipe_params[:food_type],
+      ingredient: recipe_params[:ingredient],
+      user_id: @user
+    )
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
       render new_recipe_path
     end
+    @recipe.errors.full_messages
   end
 
   def edit
@@ -31,6 +39,8 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.errors.full_messages
     @recipe.destroy
     redirect_to root_path, status: :see_other
   end
@@ -38,7 +48,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :food_type, :ingredient)
+    params.require(:recipe).permit(:name, :food_type, :ingredient, :user_id)
   end
 
   def set_recipe

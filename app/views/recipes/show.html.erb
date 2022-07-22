@@ -18,10 +18,7 @@
     <% @recipe.reviews.each do |review| %>
       <p><%= review.comment %></p>
       <p><%= review.rating %></p>
-      <p><%= link_to 'Delete this review', recipe_path(@recipe), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></p>
+      <p><%= button_to 'Delete this review', recipe_path(@recipe), method: :delete %></p>
     <% end %>
 
   <% end %>
@@ -36,7 +33,4 @@
 
 <%= link_to 'Go back to see all the recipes', recipes_path %>
 <%= link_to 'Edit this recipe', edit_recipe_path(@recipe) %>
-<%= link_to "Delete", recipe_path(@recipe), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
+<%= button_to 'Delete', recipe_path(@recipe), method: :delete %>

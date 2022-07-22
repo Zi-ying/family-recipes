@@ -20,7 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_140056) do
     t.text "ingredient"
     t.text "food_recipe"
     t.integer "baking_temperature"
-    t.string "preparation_time"
+    t.integer "preparation_time"
+    t.integer "cooking_time"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

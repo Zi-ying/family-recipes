@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def new
@@ -29,9 +30,9 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(@recipe)
   end
 
-  def delete
+  def destroy
     @recipe.destroy
-    redirect_to recipes_path
+    redirect_to root_path, status: :see_other
   end
 
   private

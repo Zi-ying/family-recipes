@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.all
+    if params[:query].present?
+      @recipes = Recipe.search_by_recipe_characteristic(params[:query])
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def show

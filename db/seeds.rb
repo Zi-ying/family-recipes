@@ -29,4 +29,16 @@ first_recipe = Recipe.new(
 
 first_recipe.save
 
+second_recipe = Recipe.new(
+  name: 'pasta salad',
+  food_type: 'pasta',
+  ingredient: 'orecchiette, ricotta, cherry tomatoes, black olives, basilic, oil, pepper',
+  food_recipe: 'first boil the pasta, then cut the cherry tomatoes, add the remaining ingredients, serve cold',
+  preparation_time: 20,
+  cooking_time: 10,
+  user_id: 1,
+)
+
+second_recipe.save
+
 puts 'one user and one recipe created'

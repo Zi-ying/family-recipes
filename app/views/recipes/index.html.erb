@@ -9,7 +9,7 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-<%= link_to 'Add a new recipe', new_recipe_path %>
+<button class="button"><%= link_to 'Add a new recipe !', new_recipe_path, class:'button-text' %></button>
 
 <% @recipes.each do |recipe|  %>
   <%= link_to recipe_path(recipe) do %>

@@ -1,0 +1,20 @@
+.button {
+
+  height: 40px;
+  width: 180px;
+  background-color: $lovely-orange;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 1px 1px 3px $lovely-light-orange;
+
+}
+
+.button-text {
+  text-decoration: none;
+  color: snow;
+  font-weight: 700;
+  &:hover {
+    transition: 0.5s;
+    color: $lovely-purple;
+  }
+}
